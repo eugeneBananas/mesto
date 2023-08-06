@@ -1,0 +1,26 @@
+.elements__heart{
+    background-image: url('../../../images/elements-heart.svg');
+    width: 22px;
+    aspect-ratio: 22/19;
+    margin-right: calc(30/282*100%);
+    cursor: pointer;
+}
+
+.elements__heart:hover{
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    opacity: 60%;
+}
+
+.elements__heart:active{
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    transition: all .1s ease;
+    background-image: url('../../../images/elements-heart-active.svg');
+    opacity: 100%;
+}

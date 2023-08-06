@@ -1,0 +1,28 @@
+.profile__add-button{
+    width: calc(150/880*100%);
+    aspect-ratio: 150/50;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    border: 2px solid #FFFFFF
+}
+
+.profile__add-button:hover{
+    opacity: 60%;
+}
+
+@media all and (max-width: 480px)
+{
+    .profile__add-button{
+        width: 100%;
+        aspect-ratio: 282/50;
+        max-width: 282px;
+        margin-top: 36px;
+    }
+}

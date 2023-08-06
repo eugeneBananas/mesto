@@ -1,0 +1,31 @@
+.popup__container{
+    position: relative;
+    width: 430px;
+    margin: auto;
+    aspect-ratio: 430/330;
+    margin-top: calc(195/1280*100%);
+    border-radius: 10px;
+    background-color: white;
+}
+
+@media all and (max-width: 850px)
+{
+    .popup__container{
+        width: 380px;
+    }
+}
+
+@media all and (max-width: 650px)
+{
+    .popup__container{
+        width: 330px;
+    }
+}
+
+@media all and (max-width: 480px)
+{
+    .popup__container{
+        aspect-ratio: 282/322;
+        width: 282px;
+    }
+}
