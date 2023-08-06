@@ -10,7 +10,7 @@
     -o-transition: all .4s ease;
     -ms-transition: all .4s ease;
     transition: all .4s ease;
-    border: 2px solid #FFFFFF
+    border: 2px solid #FFFFFF;
 }
 
 .profile__add-button:hover{
