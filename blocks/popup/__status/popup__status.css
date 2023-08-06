@@ -4,7 +4,7 @@
     display: flex;
     margin-top: 30px;
     margin-left: calc(36/430*100%);
-    font-family: inherit; 
+    font-family: inherit;
 
     font-family: Inter;
     font-size: 14px;
@@ -17,8 +17,6 @@
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     background-color: transparent;
-    font-size: 14px;
-    font-family: inherit;
 }
 
 .popup__status:focus {
