@@ -12,72 +12,67 @@
 <body class="root">
     <header class="header">
         <img src="./images/logo.svg" class="header__logo" alt="Логотип">
-        <div class="header__line"></div>
     </header>
  
-    <section class="profile">
-        <div class="profile__block">
-            <img src="./images/profile-image.png" class="profile__avatar" alt="Фотография">
-            <div class="profile__info">
-                <div class="profile__edit-name">
-                    <p class="profile__name">Жак-Ив Кусто</p>
-                    <img src="./images/edit-button.svg" class="profile__edit-button" alt="Кнопка">
+    <main>
+        <section class="profile">
+            <div class="profile__block">
+                <img src="./images/profile-image.png" class="profile__avatar" alt="Фотография">
+                <div class="profile__info">
+                    <div class="profile__edit-name">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button type="button" class="profile__edit-button" alt="Кнопка"></button>
+                    </div>
+                    <p class="profile__status">Исследователь океана</p>
                 </div>
-                <p class="profile__status">Исследователь океана</p>
             </div>
-        </div>
-        <div class="profile__add-button"><div class="profile__plus"></div></div>
-    </section>
-
-    <section class="elements"> 
-        <div class="elements__element">
-            <img src="./images/element-image1.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Карачаевск</p>
-                <div class="elements__heart"></div>
+            <button class="profile__add-button"><div class="profile__plus"></div></button>
+        </section>
+        <section class="elements">
+            <div class="elements__element">
+                <img src="./images/element-image1.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Карачаевск</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-
-        <div class="elements__element">
-            <img src="./images/element-image2.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Гора Эльбрус</p>
-                <div class="elements__heart"></div>
+            <div class="elements__element">
+                <img src="./images/element-image2.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Гора Эльбрус</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-
-        <div class="elements__element">
-            <img src="./images/element-image3.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Домбай</p>
-                <div class="elements__heart"></div>
+            <div class="elements__element">
+                <img src="./images/element-image3.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Домбай</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-
-        <div class="elements__element">
-            <img src="./images/element-image2.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Гора Эльбрус</p>
-                <div class="elements__heart"></div>
+            <div class="elements__element">
+                <img src="./images/element-image2.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Гора Эльбрус</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-
-        <div class="elements__element">
-            <img src="./images/element-image3.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Домбай</p>
-                <div class="elements__heart"></div>
+            <div class="elements__element">
+                <img src="./images/element-image3.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Домбай</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-
-        <div class="elements__element">
-            <img src="./images/element-image1.png" alt="Изображение" class="elements__image">
-            <div class="elements__rectangle">
-                <p class="elements__text">Карачаево-Черкессия</p>
-                <div class="elements__heart"></div>
+            <div class="elements__element">
+                <img src="./images/element-image1.png" alt="Изображение" class="elements__image">
+                <div class="elements__rectangle">
+                    <h2 class="elements__text">Карачаево-Черкессия</h2>
+                    <button type="button" class="elements__heart"></button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer class="footer">
         <p class="footer__text">© 2020 Mesto Russia</p>
@@ -85,16 +80,16 @@
 
     <section class="popup">
         <div class="popup__container">
-            <p class="popup__text">Редактировать профиль</p>
-            <form class="popup__form">
-            <input type="text" class="popup__name" value="Жак-Ив Кусто" maxlength="14" />
-            <input type="text" class="popup__status" value="Исследователь океана" maxlength="40" />
-            <input type="submit" class="popup__button" value="Сохранить" />
+            <h2 class="popup__text">Редактировать профиль</h2>
+            <form class="popup__form" name="popup">
+                <input type="text" class="popup__input popup__input_name" name="popup__input_name" value="Жак-Ив Кусто" maxlength="14" />
+                <input type="text" class="popup__input popup__input_status" name="popup__input_status" value="Исследователь океана" maxlength="40" />
+                <button type="submit" class="popup__button" name="popup__input_button" ><p>Сохранить</p></button>
             </form>
             <img src="./images/cross.svg" class="popup__cross" alt="Крест">
         </div>
     </section>
 
-    <script src="./script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

@@ -1,64 +1,15 @@
 .elements__text{
     margin: 0;
     position: relative;
-    left: calc(21/282*100%);
-    top: calc(3/80*100%);
-    font-family: Inter;
+    left: 21px;
+    bottom: 1px;
     font-size: 24px;
     font-weight: 900;
-    line-height: 29px;
-    letter-spacing: 0em;
+    line-height: 23px;
     color: black;
     width: calc(196/282*100%);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-}
-
-@media all and (max-width: 1024px)
-{
-    .elements__text{
-        font-size: 18px;
-        line-height: 22px;
-    }
-}
-
-@media all and (max-width: 850px)
-{
-    .elements__text{
-        font-size: 24px;
-        line-height: 29px;
-    }
-}
-
-@media all and (max-width: 760px)
-{
-    .elements__text{
-        font-size: 20px;
-        line-height: 24px;
-    }
-}
-
-@media all and (max-width: 650px)
-{
-    .elements__text{
-        font-size: 16px;
-        line-height: 20px;
-    }
-}
-
-@media all and (max-width: 540px)
-{
-    .elements__text{
-        font-size: 14px;
-        line-height: 18px;
-    }
-}
-
-@media all and (max-width: 480px)
-{
-    .elements__text{
-        font-size: 24px;
-        line-height: 29px;
-    }
+    padding-bottom: calc(19/282*100%);
 }

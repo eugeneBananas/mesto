@@ -4,43 +4,7 @@
     border-radius: 50%;
 }
 
-@media all and (max-width: 1024px)
-{
-    .profile__avatar{
-        width: 100px;
-    }
-}
-
-
-@media all and (max-width: 850px)
-{
-    .profile__avatar{
-        width: 90px;
-    }
-}
-
-@media all and (max-width: 760px)
-{
-    .profile__avatar{
-        width: 80px;
-    }
-}
-
-@media all and (max-width: 650px)
-{
-    .profile__avatar{
-        width: 70px;
-    }
-}
-
-@media all and (max-width: 540px)
-{
-    .profile__avatar{
-        width: 60px;
-    }
-}
-
-@media all and (max-width: 480px)
+@media all and (max-width: 890px)
 {
     .profile__avatar{
         width: 120px;

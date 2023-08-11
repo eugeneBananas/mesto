@@ -1,7 +1,8 @@
 .elements__rectangle{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     background: white;
-    height: calc(362/282*100% - 100%);
+    margin-top: calc(30/282*100%);
+    margin-bottom: calc(30/282*100%);
 }

@@ -1,9 +1,14 @@
 .elements__heart{
     background-image: url('../../../images/elements-heart.svg');
+    /* width: calc(22/282*100%); */
     width: 22px;
     aspect-ratio: 22/19;
-    margin-right: calc(30/282*100%);
+    background-size: contain;
+    margin-right: calc(20/282*100%);
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-color: white;
+    border: 0;
 }
 
 .elements__heart:hover{

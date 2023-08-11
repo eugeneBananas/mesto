@@ -1,4 +1,6 @@
 .popup{
+    justify-content: center;
+    align-items: center;
     width: 100%;
     position: fixed;
     height: 100vh;

@@ -16,25 +16,7 @@
     opacity: 60%;
 }
 
-@media all and (max-width: 850px)
-{
-    .popup__cross{
-        width: 28px;
-        top: -36px;
-        right: -36px;
-    }
-}
-
-@media all and (max-width: 650px)
-{
-    .popup__cross{
-        width: 24px;
-        top: -32px;
-        right: -32px;
-    }
-}
-
-@media all and (max-width: 480px)
+@media all and (max-width: 720px)
 {
     .popup__cross{
         width: 20px;

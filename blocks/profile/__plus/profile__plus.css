@@ -7,7 +7,7 @@
     background-size: cover;
 }
 
-@media all and (max-width: 480px)
+@media all and (max-width: 890px)
 {
     .profile__plus{
         background-image: url('../../..//images/plus.svg');
