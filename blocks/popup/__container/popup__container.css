@@ -2,7 +2,6 @@
     position: relative;
     width: 430px;
     margin: auto;
-    height: 330px;
     border-radius: 10px;
     background-color: white;
 }
@@ -10,7 +9,6 @@
 @media all and (max-width: 720px)
 {
     .popup__container{
-        height: 322px;
         width: 282px;
     }
 }

@@ -6,12 +6,14 @@ let popupEnter = profile.querySelector('.profile__edit-button')
 
 let userName = profile.querySelector('.profile__name');
 let userStatus = profile.querySelector('.profile__status');
-let inputName = popup.querySelector('.popup__input_name');
-let inputStatus = popup.querySelector('.popup__input_status');
+let inputName = popup.querySelector('.popup__input_enter_name');
+let inputStatus = popup.querySelector('.popup__input_enter_status');
 let formElement = popup.querySelector('.popup__form');
 
 function openPopup(){
     popup.classList.add('popup_opened')
+    inputName.value = userName.textContent;
+    inputStatus.value = userStatus.textContent;
 }
 
 function closePopup(){
