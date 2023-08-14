@@ -9,10 +9,10 @@
     background-repeat: no-repeat;
     background-color: white;
     border: 0;
-    -ms-user-select: none; 
-    -moz-user-select: none; 
-    -webkit-user-select: none; 
-    user-select: none; 
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .elements__heart:hover{
