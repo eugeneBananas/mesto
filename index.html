@@ -29,6 +29,19 @@
             <button type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
+
+            <template id="card">
+                <div class="elements__element">
+                    <img src="" alt="Изображение" class="elements__image">
+                    <button type="button" class="elements__trash"></button>
+                    <div class="elements__rectangle">
+                        <h2 class="elements__text">Текст</h2>
+                        <button type="button" class="elements__heart"></button>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- 
             <div class="elements__element">
                 <img src="./images/element-image1.png" alt="Изображение" class="elements__image">
                 <div class="elements__rectangle">
@@ -70,7 +83,7 @@
                     <h2 class="elements__text">Карачаево-Черкессия</h2>
                     <button type="button" class="elements__heart"></button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
 
@@ -78,7 +91,7 @@
         <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup popup_action_edit">
         <div class="popup__container">
             <h2 class="popup__text">Редактировать профиль</h2>
             <form class="popup__form" name="popup">
@@ -86,6 +99,26 @@
                 <input type="text" class="popup__input popup__input_enter_status" name="popup__input-status" value="" maxlength="40" />
                 <button type="submit" class="popup__button" name="popup__input-button">Сохранить</button>
             </form>
+            <button type="button" class="popup__cross"></button>
+        </div>
+    </section>
+
+    <section class="popup popup_action_add">
+        <div class="popup__container">
+            <h2 class="popup__text">Новое место</h2>
+            <form class="popup__form" name="popup">
+                <input type="text" placeholder="Название" class="popup__input popup__input_enter_title" name="popup__input-name" value=""/>
+                <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_enter_link" name="popup__input-status" value=""/>
+                <button type="submit" class="popup__button" name="popup__input-button">Создать</button>
+            </form>
+            <button type="button" class="popup__cross"></button>
+        </div>
+    </section>
+
+    <section class="popup popup_action_depict">
+        <div class="popup__filling">
+            <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Изображение" class="popup__illustration">
+            <p class="popup__hint">Текст</p>
             <button type="button" class="popup__cross"></button>
         </div>
     </section>

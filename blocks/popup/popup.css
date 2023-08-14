@@ -7,5 +7,10 @@
     background-color: rgba(0, 0, 0, .5);
     top: 0;
     left: 0;
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0.4s, opacity 0.4s ease-in;
+    -o-transition: visibility 0.4s, opacity 0.4s ease-in;
+    transition: visibility 0.4s, opacity 0.4s ease-in;
 }
