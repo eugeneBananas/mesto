@@ -7,4 +7,14 @@
     background-color: transparent;
     top: 20px;
     right: 20px;
+    cursor: pointer;
+}
+
+.elements__trash:hover{
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    opacity: 60%;
 }
