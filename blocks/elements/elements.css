@@ -2,7 +2,6 @@
     display: grid;
     display: -ms-grid;
     grid-template-columns: repeat(3, 1fr);
-    /* width: calc(880/1280*100%); */
     width: 880px;
     gap: 20px 17px;
     margin: auto;
