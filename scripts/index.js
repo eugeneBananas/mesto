@@ -42,7 +42,7 @@ function handleFormEditSubmit(evt) {
     closePopup(popupEdit); 
 } 
 
-function addCard(title, link){
+function createCard(title, link){
   const cardTemplate = containerWithElements.querySelector('#card').content;
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
   const heartCard = cardElement.querySelector('.elements__heart');
@@ -52,7 +52,7 @@ function addCard(title, link){
 
   textCard.textContent = title; 
   imageCard.src = link; 
-  imageCard.alt = "Изображение пользователя"; 
+  imageCard.alt = "На фото" + title; 
   heartCard.addEventListener('click', function (event) {
     event.target.classList.toggle('elements__heart_active');
   });
@@ -66,18 +66,18 @@ function addCard(title, link){
       hintIndication.textContent = textCard.textContent;
       openPopup(popupImage);
   });
-  containerWithElements.prepend(cardElement);
+  return cardElement;
 }
 
 function handleFormAddSubmit(evt) { 
     evt.preventDefault();
-    addCard(inputTitle.value, inputLink.value);
+    containerWithElements.prepend(createCard(inputTitle.value, inputLink.value));
     closePopup(popupAdd);
 }
 
 function loadCards(){
     initialCards.forEach(function(item){
-      addCard(item.name, item.link);
+      containerWithElements.append(createCard(item.name, item.link));
     });
 }
 loadCards();
