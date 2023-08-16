@@ -52,7 +52,7 @@ function createCard(title, link){
 
   textCard.textContent = title; 
   imageCard.src = link; 
-  imageCard.alt = "На фото" + title; 
+  imageCard.alt = "На фото " + title; 
   heartCard.addEventListener('click', function (event) {
     event.target.classList.toggle('elements__heart_active');
   });
