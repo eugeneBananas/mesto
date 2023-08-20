@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     border-radius: 10px;
     overflow: hidden;
     aspect-ratio: 282/362;

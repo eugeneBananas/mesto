@@ -95,8 +95,10 @@
         <div class="popup__container">
             <h2 class="popup__text">Редактировать профиль</h2>
             <form class="popup__form" name="popup-edit">
-                <input type="text" placeholder="Имя" class="popup__input popup__input_enter_name" name="popup-edit__input-name" value="" maxlength="14" />
-                <input type="text" placeholder="Статус" class="popup__input popup__input_enter_status" name="popup-edit__input-status" value="" maxlength="40" />
+                <input type="text" pattern=".*\S+.*" id="popup__name" placeholder="Имя" class="popup__input popup__input_enter_name" name="popup-edit__input-name" value="" minlength="2" maxlength="40" required novalidate/>
+                <span class="popup__error popup__name-error"></span>
+                <input type="text" pattern=".*\S+.*" id="popup__status" placeholder="Статус" class="popup__input popup__input_enter_status" name="popup-edit__input-status" value="" minlength="2" maxlength="200" required novalidate/>
+                <span class="popup__error popup__status-error"></span>
                 <button type="submit" class="popup__button" name="popup-edit__input-button">Сохранить</button>
             </form>
             <button type="button" class="popup__cross"></button>
@@ -107,8 +109,10 @@
         <div class="popup__container">
             <h2 class="popup__text">Новое место</h2>
             <form class="popup__form" name="popup-add">
-                <input type="text" placeholder="Название" class="popup__input popup__input_enter_title" name="popup-add__input-title" value=""/>
-                <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_enter_link" name="popup-add__input-link" value=""/>
+                <input type="text" pattern=".*\S+.*" id="popup__title" placeholder="Название" class="popup__input popup__input_enter_title" name="popup-add__input-title" value="" minlength="2" maxlength="30" required novalidate/>
+                <span class="popup__error popup__title-error"></span>
+                <input type="url" pattern=".*\S+.*" id="popup__link" placeholder="Ссылка на картинку" class="popup__input popup__input_enter_link" name="popup-add__input-link" value="" required novalidate/>
+                <span class="popup__error popup__link-error"></span>
                 <button type="submit" class="popup__button" name="popup-add__input-button">Создать</button>
             </form>
             <button type="button" class="popup__cross"></button>
@@ -125,5 +129,6 @@
 
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
