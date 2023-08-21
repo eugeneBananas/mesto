@@ -1,22 +1,31 @@
-function showError(errorElement, inputElement, errorMessage){
-    inputElement.classList.add('popup__input_type_error');
-    errorElement.classList.add('popup__error_active');
+const parameterToConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_active'
+}
+
+function showError(errorElement, inputElement, inputErrorClass, errorClass, errorMessage){
+    inputElement.classList.add(inputErrorClass);
+    errorElement.classList.add(errorClass);
     errorElement.textContent = errorMessage;
 }
 
-function hideError(errorElement, inputElement){
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__error_active');
+function hideError(errorElement, inputElement, inputErrorClass, errorClass){
+    inputElement.classList.remove(inputErrorClass);
+    errorElement.classList.remove(errorClass);
     errorElement.textContent = "";
 }
 
 //Функция проверки одного инпута
-function checkValidity(errorElement, inputElement){
+function checkValidity(errorElement, inputElement, inputErrorClass, errorClass){
     if (inputElement.validity.valid){
-        hideError(errorElement, inputElement);
+        hideError(errorElement, inputElement, inputErrorClass, errorClass);
     }
     else{
-        showError(errorElement, inputElement, inputElement.validationMessage);
+        showError(errorElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
     }
 }
 
@@ -26,14 +35,14 @@ function hasInvalidInput(inputs){
     })
 }
 
-const toggleButtonState = (inputs, buttonElement) => {
+const toggleButtonState = (inputs, buttonElement, inactiveButtonClass) => {
     if (hasInvalidInput(inputs)) {
         toggleEnablingButton(buttonElement, true);
-        buttonElement.classList.add('popup__button_inactive');
+        buttonElement.classList.add(inactiveButtonClass);
     } 
     else {
         toggleEnablingButton(buttonElement, false);
-        buttonElement.classList.remove('popup__button_inactive');
+        buttonElement.classList.remove(inactiveButtonClass);
     }
 }; 
 
@@ -42,24 +51,27 @@ function toggleEnablingButton(buttonElement, booleanValue){
 }
 
 //Функция проверки одной формы
-function goThroughForm(form){
-    const inputs = Array.from(form.querySelectorAll('.popup__input'));
-    const buttonSubmit = form.querySelector('.popup__button');
-    toggleButtonState(inputs, buttonSubmit);
+function goThroughForm(form, config){
+    const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+    const buttonSubmit = form.querySelector(config.submitButtonSelector);
+    toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass);
     inputs.forEach(function(inputElement){
         const errorElement = form.querySelector(`.${inputElement.id}-error`);
         errorElement.textContent = "";
         inputElement.addEventListener('input', function(){
-            checkValidity(errorElement, inputElement);
-            toggleButtonState(inputs, buttonSubmit)});
+            checkValidity(errorElement, inputElement, config.inputErrorClass, config.errorClass);
+            toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass)});
     })
 };
 
-const enableValidation = () => {
-    const forms = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = (config) => {
+    const forms = Array.from(document.querySelectorAll(config.formSelector));
     forms.forEach(function(form){
-        goThroughForm(form);
+        form.addEventListener("submit", function(evt){
+            evt.preventDefault();
+        })
+        goThroughForm(form, config);
     })
 };
   
-enableValidation();
+enableValidation(parameterToConfig);
