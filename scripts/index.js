@@ -29,9 +29,31 @@ const illustrationIndication = popupImage.querySelector('.popup__illustration')
 const hintIndication = popupImage.querySelector('.popup__hint');
 
 function openPopup(popup){
+  checkAndResetButton(popup);
+  checkAndResetErrors(popup);
   popup.classList.add('popup_opened');
   // popup.addEventListener("click", closePopupOverlay);
   document.addEventListener("keydown", closePopupEscape);
+}
+
+function checkAndResetButton(popup){
+  if (popup.querySelector('.popup__button')){
+    popup.querySelector('.popup__button').disabled = true;
+    popup.querySelector('.popup__button').classList.add('popup__button_inactive');
+  };
+}
+
+function checkAndResetErrors(popup){
+  if (popup.querySelector('.popup__error')){
+    const form = popup.querySelector('.popup__form');
+    const inputs = Array.from(form.querySelectorAll('.popup__input'));
+    inputs.forEach(function(input){
+      const errorElement = form.querySelector(`.${input.id}-error`);
+      errorElement.textContent = '';
+      input.classList.remove('popup__input_type_error');
+      errorElement.classList.remove('popup__error_active');
+    });
+  };
 }
 
 function closePopup(popup){ 
@@ -56,7 +78,8 @@ function handleFormEditSubmit(evt) {
     evt.preventDefault(); 
     userName.textContent = inputName.value; 
     userStatus.textContent = inputStatus.value; 
-    closePopup(popupEdit); 
+    closePopup(popupEdit);
+    popupEdit.querySelector('.popup__button').disabled = true;
 } 
 
 function createCard(title, link){
@@ -90,6 +113,7 @@ function handleFormAddSubmit(evt) {
     evt.preventDefault();
     containerWithElements.prepend(createCard(inputTitle.value, inputLink.value));
     closePopup(popupAdd);
+    popupEdit.querySelector('.popup__button').disabled = true;
 }
 
 function loadCards(){

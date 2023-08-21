@@ -28,52 +28,38 @@ function hasInvalidInput(inputs){
 
 const toggleButtonState = (inputs, buttonElement) => {
     if (hasInvalidInput(inputs)) {
-      buttonElement.classList.add('popup__button_inactive');
+        toggleEnablingButton(buttonElement, true);
+        buttonElement.classList.add('popup__button_inactive');
     } 
     else {
+        toggleEnablingButton(buttonElement, false);
         buttonElement.classList.remove('popup__button_inactive');
     }
-};
+}; 
 
-function resetButton(form){
-    const button = form.querySelector('.popup__button');
-    button.classList.add('popup__button_inactive');
-}
-
-function resetErrors(form){
-    const inputs = Array.from(form.querySelectorAll('.popup__input'));
-    inputs.forEach(function(inputElement){
-        const errorElement = form.querySelector(`.${inputElement.id}-error`);
-        hideError(errorElement, inputElement);
-    })
+function toggleEnablingButton(buttonElement, booleanValue){
+    buttonElement.disabled = booleanValue;
 }
 
 //Функция проверки одной формы
 function goThroughForm(form){
     const inputs = Array.from(form.querySelectorAll('.popup__input'));
-    toggleButtonState(inputs, form.querySelector('.popup__button'));
+    const buttonSubmit = form.querySelector('.popup__button');
+    toggleButtonState(inputs, buttonSubmit);
     inputs.forEach(function(inputElement){
         const errorElement = form.querySelector(`.${inputElement.id}-error`);
         errorElement.textContent = "";
         inputElement.addEventListener('input', function(){
             checkValidity(errorElement, inputElement);
-            toggleButtonState(inputs, form.querySelector('.popup__button'))});
+            toggleButtonState(inputs, buttonSubmit)});
     })
 };
 
-//Функция проверки всех форм
-function goThroughDocument(){
+const enableValidation = () => {
     const forms = Array.from(document.querySelectorAll('.popup__form'));
     forms.forEach(function(form){
         goThroughForm(form);
-        form.addEventListener("submit", function(){
-            resetButton(form);
-        })
-        const cross = form.closest('.popup__container').querySelector('.popup__cross');
-        cross.addEventListener("click", function(){
-            resetButton(form);
-            resetErrors(form);
-        })
     })
-}
-goThroughDocument();
+};
+  
+enableValidation();
