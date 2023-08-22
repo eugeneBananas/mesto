@@ -29,31 +29,25 @@ const illustrationIndication = popupImage.querySelector('.popup__illustration')
 const hintIndication = popupImage.querySelector('.popup__hint');
 
 function openPopup(popup){
-  checkAndResetButton(popup);
-  checkAndResetErrors(popup);
   popup.classList.add('popup_opened');
   // popup.addEventListener("click", closePopupOverlay);
   document.addEventListener("keydown", closePopupEscape);
 }
 
 function checkAndResetButton(popup){
-  if (popup.querySelector('.popup__button')){
-    popup.querySelector('.popup__button').disabled = true;
-    popup.querySelector('.popup__button').classList.add('popup__button_inactive');
-  };
-}
+  popup.querySelector('.popup__button').disabled = true;
+  popup.querySelector('.popup__button').classList.add('popup__button_inactive');
+};
 
 function checkAndResetErrors(popup){
-  if (popup.querySelector('.popup__error')){
-    const form = popup.querySelector('.popup__form');
-    const inputs = Array.from(form.querySelectorAll('.popup__input'));
-    inputs.forEach(function(input){
-      const errorElement = form.querySelector(`.${input.id}-error`);
-      errorElement.textContent = '';
-      input.classList.remove('popup__input_type_error');
-      errorElement.classList.remove('popup__error_active');
-    });
-  };
+  const form = popup.querySelector('.popup__form');
+  const inputs = Array.from(form.querySelectorAll('.popup__input'));
+  inputs.forEach(function(input){
+    const errorElement = form.querySelector(`.${input.id}-error`);
+    errorElement.textContent = '';
+    input.classList.remove('popup__input_type_error');
+    errorElement.classList.remove('popup__error_active');
+  });
 }
 
 function closePopup(popup){ 
@@ -127,6 +121,8 @@ popupEditQuit.addEventListener('click', function(){closePopup(popupEdit)});
 popupEditEnter.addEventListener('click', function(){
   inputName.value = userName.textContent; 
   inputStatus.value = userStatus.textContent;
+  checkAndResetButton(popupEdit);
+  checkAndResetErrors(popupEdit);
   openPopup(popupEdit);
 }); 
 formEditElement.addEventListener('submit', handleFormEditSubmit); 
@@ -134,7 +130,9 @@ formEditElement.addEventListener('submit', handleFormEditSubmit);
 popupAddQuit.addEventListener('click', function(){closePopup(popupAdd)}); 
 popupAddEnter.addEventListener('click', function(){
   inputTitle.value = ""; 
-  inputLink.value = ""; 
+  inputLink.value = "";
+  checkAndResetButton(popupAdd);
+  checkAndResetErrors(popupAdd);
   openPopup(popupAdd);
 }); 
 formAddElement.addEventListener('submit', handleFormAddSubmit); 

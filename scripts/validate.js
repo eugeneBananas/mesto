@@ -50,27 +50,19 @@ function toggleEnablingButton(buttonElement, booleanValue){
     buttonElement.disabled = booleanValue;
 }
 
-//Функция проверки одной формы
-function goThroughForm(form, config){
-    const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-    const buttonSubmit = form.querySelector(config.submitButtonSelector);
-    toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass);
-    inputs.forEach(function(inputElement){
-        const errorElement = form.querySelector(`.${inputElement.id}-error`);
-        errorElement.textContent = "";
-        inputElement.addEventListener('input', function(){
-            checkValidity(errorElement, inputElement, config.inputErrorClass, config.errorClass);
-            toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass)});
-    })
-};
-
 const enableValidation = (config) => {
     const forms = Array.from(document.querySelectorAll(config.formSelector));
     forms.forEach(function(form){
-        form.addEventListener("submit", function(evt){
-            evt.preventDefault();
+        const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+        const buttonSubmit = form.querySelector(config.submitButtonSelector);
+        toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass);
+        inputs.forEach(function(inputElement){
+            const errorElement = form.querySelector(`.${inputElement.id}-error`);
+            errorElement.textContent = "";
+            inputElement.addEventListener('input', function(){
+                checkValidity(errorElement, inputElement, config.inputErrorClass, config.errorClass);
+                toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass)});
         })
-        goThroughForm(form, config);
     })
 };
   
