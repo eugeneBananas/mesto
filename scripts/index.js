@@ -1,3 +1,6 @@
+import { FormValidator } from "./formValidator.js";
+import { Card, initialCards } from "./card.js";
+
 const popupEdit = document.querySelector('.popup_action_edit');
 const popupAdd = document.querySelector('.popup_action_add');
 const popupImage = document.querySelector('.popup_action_depict');
@@ -76,43 +79,45 @@ function handleFormEditSubmit(evt) {
     popupEdit.querySelector('.popup__button').disabled = true;
 } 
 
-function createCard(title, link){
-  const cardTemplate = containerWithElements.querySelector('#card').content;
-  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
-  const heartCard = cardElement.querySelector('.elements__heart');
-  const trashCard = cardElement.querySelector('.elements__trash');
-  const textCard = cardElement.querySelector('.elements__text');
-  const imageCard = cardElement.querySelector('.elements__image');
+// function createCard(title, link){
+//   const cardTemplate = containerWithElements.querySelector('#card').content;
+//   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
+//   const heartCard = cardElement.querySelector('.elements__heart');
+//   const trashCard = cardElement.querySelector('.elements__trash');
+//   const textCard = cardElement.querySelector('.elements__text');
+//   const imageCard = cardElement.querySelector('.elements__image');
 
-  textCard.textContent = title; 
-  imageCard.src = link; 
-  imageCard.alt = "На фото " + title; 
-  heartCard.addEventListener('click', function (event) {
-    event.target.classList.toggle('elements__heart_active');
-  });
-  trashCard.addEventListener('click', function (event) { 
-      const currentCard = event.target.closest('.elements__element');
-      currentCard.remove();
-  });
-  imageCard.addEventListener('click', function (event) {
-      illustrationIndication.src = imageCard.src;
-      illustrationIndication.alt = imageCard.alt;
-      hintIndication.textContent = textCard.textContent;
-      openPopup(popupImage);
-  });
-  return cardElement;
-}
+//   textCard.textContent = title; 
+//   imageCard.src = link; 
+//   imageCard.alt = "На фото " + title; 
+//   heartCard.addEventListener('click', function (event) {
+//     event.target.classList.toggle('elements__heart_active');
+//   });
+//   trashCard.addEventListener('click', function (event) { 
+//       const currentCard = event.target.closest('.elements__element');
+//       currentCard.remove();
+//   });
+//   imageCard.addEventListener('click', function (event) {
+//       illustrationIndication.src = imageCard.src;
+//       illustrationIndication.alt = imageCard.alt;
+//       hintIndication.textContent = textCard.textContent;
+//       openPopup(popupImage);
+//   });
+//   return cardElement;
+// }
 
 function handleFormAddSubmit(evt) { 
     evt.preventDefault();
-    containerWithElements.prepend(createCard(inputTitle.value, inputLink.value));
+    const card = new Card(inputTitle.value, inputLink.value, '#card');
+    containerWithElements.prepend(card.createCard());
     closePopup(popupAdd);
     popupEdit.querySelector('.popup__button').disabled = true;
 }
 
 function loadCards(){
     initialCards.forEach(function(item){
-      containerWithElements.append(createCard(item.name, item.link));
+      const card = new Card(item.name, item.link, '#card');
+      containerWithElements.append(card.createCard());
     });
 }
 loadCards();
@@ -142,3 +147,25 @@ popupImageQuit.addEventListener('click', function(){closePopup(popupImage)});
 popups.forEach(function(popup){
   popup.addEventListener("click", function(evt){closePopupOverlay(evt, popup)});
 })
+
+const parameterToConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_active'
+}
+
+function turnOnValidation(){
+  const forms = Array.from(document.querySelectorAll(parameterToConfig.formSelector));
+  forms.forEach(function(form){
+      const formValidate = new FormValidator(parameterToConfig, form);
+      formValidate.enableValidation();
+  })
+
+};
+
+turnOnValidation();
+
+export { containerWithElements, illustrationIndication, hintIndication, openPopup, popupImage }
