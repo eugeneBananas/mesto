@@ -41,40 +41,48 @@ class Card {
   }
 
   _fillTemplateElement(){
-    const _textCard = this._cardElement.querySelector('.elements__text');
-    const _imageCard = this._cardElement.querySelector('.elements__image');
-    _textCard.textContent = this._title;
-    _imageCard.src = this._link; 
-    _imageCard.alt = "На фото " + this._title;
+    this._textCard.textContent = this._title;
+    this._imageCard.src = this._link; 
+    this._imageCard.alt = "На фото " + this._title;
+  }
+
+  _toggleLike(){
+    this._heartCard.classList.toggle('elements__heart_active'); 
+  } 
+
+  _deleteCards(target){
+    const currentCard = target.closest('.elements__element');
+    currentCard.remove();
+  } 
+
+  _handleImageClick(_imageCard){
+    this._imageCard.addEventListener('click',(event) => {
+      illustrationIndication.src = this._imageCard.src;
+      illustrationIndication.alt = this._imageCard.alt;
+      hintIndication.textContent = this._textCard.textContent;
+      openPopup(popupImage);
+    })
   }
 
   _setHeartEventListener(){
-    this._heartCard.addEventListener('click', function (event) {
-      event.target.classList.toggle('elements__heart_active');
+    this._heartCard.addEventListener('click', () => {
+      this._toggleLike();
     });
   }
 
   _setTrashEventListener(){
-    this._trashCard.addEventListener('click', function (event) { 
-      const currentCard = event.target.closest('.elements__element');
-      currentCard.remove();
+    this._trashCard.addEventListener('click', (evt) => { 
+      this._deleteCards(evt.target);
   });
   }
 
   _setImageEventListener(_imageCard){
-    const _textCard = this._cardElement.querySelector('.elements__text');
-    _imageCard.addEventListener('click', function (event) {
-      illustrationIndication.src = _imageCard.src;
-      illustrationIndication.alt = _imageCard.alt;
-      hintIndication.textContent = _textCard.textContent;
-      openPopup(popupImage);
-  });
+    this._handleImageClick(_imageCard);
   }
 
   _setEventListeners(){
     this._heartCard = this._cardElement.querySelector('.elements__heart');
     this._trashCard = this._cardElement.querySelector('.elements__trash');
-    this._imageCard = this._cardElement.querySelector('.elements__image');
     this._setHeartEventListener();
     this._setTrashEventListener();
     this._setImageEventListener(this._imageCard);
@@ -82,6 +90,8 @@ class Card {
 
   createCard(){
     this._cardElement = this._createTemplateElement();
+    this._textCard = this._cardElement.querySelector('.elements__text');
+    this._imageCard = this._cardElement.querySelector('.elements__image');
     this._fillTemplateElement();
     this._setEventListeners();
     return this._cardElement;
