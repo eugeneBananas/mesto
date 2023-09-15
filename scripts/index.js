@@ -28,8 +28,11 @@ const inputLink = popupAdd.querySelector('.popup__input_enter_link');
 const formEditElement = popupEdit.querySelector('.popup__form');
 const formAddElement = popupAdd.querySelector('.popup__form');
 
-const illustrationIndication = popupImage.querySelector('.popup__illustration')
+const illustrationIndication = popupImage.querySelector('.popup__illustration');
 const hintIndication = popupImage.querySelector('.popup__hint');
+
+const formEditPopup = document.querySelector('form[name="popup-edit"]');
+const formAddPopup = document.querySelector('form[name="popup-add"]');
 
 function openPopup(popup){
   popup.classList.add('popup_opened');
@@ -37,19 +40,17 @@ function openPopup(popup){
   document.addEventListener("keydown", closePopupEscape);
 }
 
-function checkAndResetButton(popup){
+function checkAndResetButton(popup, formClass){
   const form = popup.querySelector('.popup__form');
-  const formValidate = new FormValidator(parameterToConfig, form);
-  formValidate.resetButton(popup.querySelector('.popup__button'));
+  formClass.resetButton(form.querySelector('.popup__button'));
   // popup.querySelector('.popup__button').disabled = true;
   // popup.querySelector('.popup__button').classList.add('popup__button_inactive');
 };
 
-function checkAndResetErrors(popup){
+function checkAndResetErrors(popup, formClass){
   const form = popup.querySelector('.popup__form');
-  const formValidate = new FormValidator(parameterToConfig, form);
   const inputs = Array.from(form.querySelectorAll('.popup__input'));
-  formValidate.resetErrors(inputs, form);
+  formClass.resetErrors(inputs, popup);
   // inputs.forEach(function(input){
   //   const errorElement = form.querySelector(`.${input.id}-error`);
   //   errorElement.textContent = '';
@@ -81,9 +82,7 @@ function handleFormEditSubmit(evt) {
     userName.textContent = inputName.value; 
     userStatus.textContent = inputStatus.value; 
     closePopup(popupEdit);
-    const form = popupEdit.querySelector('.popup__form');
-    const formValidate = new FormValidator(parameterToConfig, form);
-    formValidate.disableButton(popupEdit.querySelector('.popup__button'));
+    formValidateEditPopup.disableButton(popupEdit.querySelector('.popup__button'));
 } 
 
 // function createCard(title, link){
@@ -124,9 +123,7 @@ function handleFormAddSubmit(evt) {
   const card = createCard(inputTitle.value, inputLink.value, '#card');
   containerWithElements.prepend(card);
   closePopup(popupAdd);
-  const form = popupEdit.querySelector('.popup__form');
-  const formValidate = new FormValidator(parameterToConfig, form);
-  formValidate.disableButton(popupAdd.querySelector('.popup__button'));
+  formValidateAddPopup.disableButton(popupAdd.querySelector('.popup__button'));
 }
 
 function loadCards(){
@@ -141,8 +138,8 @@ popupEditQuit.addEventListener('click', function(){closePopup(popupEdit)});
 popupEditEnter.addEventListener('click', function(){
   inputName.value = userName.textContent; 
   inputStatus.value = userStatus.textContent;
-  checkAndResetButton(popupEdit);
-  checkAndResetErrors(popupEdit);
+  checkAndResetButton(popupEdit, formValidateEditPopup);
+  checkAndResetErrors(popupEdit, formValidateEditPopup);
   openPopup(popupEdit);
 }); 
 formEditElement.addEventListener('submit', handleFormEditSubmit); 
@@ -151,8 +148,8 @@ popupAddQuit.addEventListener('click', function(){closePopup(popupAdd)});
 popupAddEnter.addEventListener('click', function(){
   inputTitle.value = ""; 
   inputLink.value = "";
-  checkAndResetButton(popupAdd);
-  checkAndResetErrors(popupAdd);
+  checkAndResetButton(popupAdd, formValidateAddPopup);
+  checkAndResetErrors(popupAdd, formValidateAddPopup);
   openPopup(popupAdd);
 }); 
 formAddElement.addEventListener('submit', handleFormAddSubmit); 
@@ -171,6 +168,9 @@ const parameterToConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active'
 }
+
+const formValidateEditPopup = new FormValidator(parameterToConfig, formEditPopup);
+const formValidateAddPopup = new FormValidator(parameterToConfig, formAddPopup);
 
 function turnOnValidation(){
   const forms = Array.from(document.querySelectorAll(parameterToConfig.formSelector));

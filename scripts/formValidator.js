@@ -65,15 +65,15 @@ export class FormValidator {
 
     resetButton(button){
         this.disableButton(button);
-        button.classList.add('popup__button_inactive');
+        button.classList.add(this._inactiveButtonClass);
     }
 
-    resetErrors(inputs, form){
-        inputs.forEach(function(input){
-            const errorElement = form.querySelector(`.${input.id}-error`);
+    resetErrors(inputs, popup){
+        inputs.forEach((input) => {
+            const errorElement = popup.querySelector(`.${input.id}-error`);
             errorElement.textContent = '';
-            input.classList.remove('popup__input_type_error');
-            errorElement.classList.remove('popup__error_active');
+            input.classList.remove(this._inputErrorClass);
+            errorElement.classList.remove(this._errorClass);
         });
     }
 
@@ -134,12 +134,12 @@ export class FormValidator {
 
 // const enableValidation = (config) => {
 //     const forms = Array.from(document.querySelectorAll(config.formSelector));
-//     forms.forEach(function(form){
-//         const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-//         const buttonSubmit = form.querySelector(config.submitButtonSelector);
+//     forms.forEach(function(_form){
+//         const inputs = Array.from(_form.querySelectorAll(config.inputSelector));
+//         const buttonSubmit = _form.querySelector(config.submitButtonSelector);
 //         toggleButtonState(inputs, buttonSubmit, config.inactiveButtonClass);
 //         inputs.forEach(function(inputElement){
-//             const errorElement = form.querySelector(`.${inputElement.id}-error`);
+//             const errorElement = _form.querySelector(`.${inputElement.id}-error`);
 //             errorElement.textContent = "";
 //             inputElement.addEventListener('input', function(){
 //                 checkValidity(errorElement, inputElement, config.inputErrorClass, config.errorClass);
