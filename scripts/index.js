@@ -172,15 +172,7 @@ const parameterToConfig = {
 const formValidateEditPopup = new FormValidator(parameterToConfig, formEditPopup);
 const formValidateAddPopup = new FormValidator(parameterToConfig, formAddPopup);
 
-function turnOnValidation(){
-  const forms = Array.from(document.querySelectorAll(parameterToConfig.formSelector));
-  forms.forEach(function(form){
-      const formValidate = new FormValidator(parameterToConfig, form);
-      formValidate.enableValidation();
-  })
-
-};
-
-turnOnValidation();
+formValidateEditPopup.enableValidation();
+formValidateAddPopup.enableValidation();
 
 export { containerWithElements, illustrationIndication, hintIndication, openPopup, popupImage }
