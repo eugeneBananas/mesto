@@ -106,9 +106,9 @@
     </section>
 
     <section class="popup popup_action_add">
-        <div class="popup__container" novalidate>
+        <div class="popup__container">
             <h2 class="popup__text">Новое место</h2>
-            <form class="popup__form" name="popup-add">
+            <form class="popup__form" name="popup-add" novalidate>
                 <input type="text" pattern=".*\S+.*" id="popup__title" placeholder="Название" class="popup__input popup__input_enter_title" name="popup-add__input-title" value="" minlength="2" maxlength="30" required/>
                 <span class="popup__error popup__title-error"></span>
                 <input type="url" pattern=".*\S+.*" id="popup__link" placeholder="Ссылка на картинку" class="popup__input popup__input_enter_link" name="popup-add__input-link" value="" required/>
