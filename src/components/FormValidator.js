@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
     constructor(parameterToConfig, form){
         this._formSelector = parameterToConfig.formSelector;
         this._inputSelector = parameterToConfig.inputSelector;
