@@ -28,15 +28,6 @@ export default class Card {
     currentCard.remove();
   } 
 
-  _handleImageClick(_imageCard, _textCard){
-    this._imageCard.addEventListener('click',(event) => {
-      const src = this._imageCard.src;
-      const alt = this._imageCard.alt
-      const textContent = this._textCard.textContent;
-      this._handleCardClick({src, alt, textContent});
-    })
-  }
-
   _setHeartEventListener(){
     this._heartCard.addEventListener('click', () => {
       this._toggleLike();
@@ -49,8 +40,13 @@ export default class Card {
   });
   }
 
-  _setImageEventListener(_imageCard,  _textCard){
-    this._handleImageClick(_imageCard, _textCard);
+  _setImageEventListener(){
+    this._imageCard.addEventListener('click',(event) => {
+      const src = this._imageCard.src;
+      const alt = this._imageCard.alt
+      const textContent = this._textCard.textContent;
+      this._handleCardClick({src, alt, textContent});
+    })
   }
 
   _setEventListeners(){
@@ -58,7 +54,7 @@ export default class Card {
     this._trashCard = this._cardElement.querySelector('.elements__trash');
     this._setHeartEventListener();
     this._setTrashEventListener();
-    this._setImageEventListener(this._imageCard, this._textCard);
+    this._setImageEventListener();
   }
 
   createCard(){
