@@ -18,3 +18,6 @@ MestoRussia - это интерактивный сайт, который пре�
 - HTML
 - CSS
 - JavaScript
+- ES6 Modules
+- ООП
+- Webpack

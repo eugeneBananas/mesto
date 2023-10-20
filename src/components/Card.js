@@ -4,9 +4,6 @@ export default class Card {
     this._link = link;
     this._selector = selector;
     this._handleCardClick = handleCardClick;
-    this._imagePopup = document.querySelector('.popup_action_depict');
-    this._illustrationIndication = this._imagePopup.querySelector('.popup__illustration');
-    this._hintIndication = this._imagePopup.querySelector('.popup__hint');
   }
 
   _createTemplateElement(){
@@ -17,6 +14,7 @@ export default class Card {
 
   _fillTemplateElement(){
     this._textCard.textContent = this._title;
+    this._imageCard.src = this._link;
     this._imageCard.src = this._link;
     this._imageCard.alt = "На фото " + this._title;
   }
@@ -32,11 +30,8 @@ export default class Card {
 
   _handleImageClick(_imageCard, _textCard){
     this._imageCard.addEventListener('click',(event) => {
-      this._illustrationIndication.src = this._imageCard.src;
       const src = this._imageCard.src;
-      this._illustrationIndication.alt = this._imageCard.alt;
       const alt = this._imageCard.alt
-      this._hintIndication.textContent = this._textCard.textContent;
       const textContent = this._textCard.textContent;
       this._handleCardClick({src, alt, textContent});
     })
