@@ -5,7 +5,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
-import {parameterToConfig, initialCards, popupEdit, profile, popupEditEnter, popupAddEnter, inputName, inputStatus, userName, userStatus, formEditPopup, formAddPopup, containerWithElements} from "../scripts/Constant.js";
+import {parameterToConfig, initialCards, popupEdit, popupEditEnter, popupAddEnter, inputName, inputStatus, formEditPopup, formAddPopup} from "../scripts/Constant.js";
 
 const userInfo = new UserInfo({ elementName: ".profile__name", elementInfo: ".profile__status"});
 const popupWithImage = new PopupWithImage('.popup_action_depict');

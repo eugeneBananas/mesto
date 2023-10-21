@@ -1,4 +1,4 @@
-export {parameterToConfig, initialCards, popupEdit, profile, popupEditEnter, popupAddEnter, inputName, inputStatus, userName, userStatus, formEditPopup, formAddPopup, containerWithElements};
+export {parameterToConfig, initialCards, popupEdit, popupEditEnter, popupAddEnter, inputName, inputStatus, formEditPopup, formAddPopup};
 
 const parameterToConfig = {
     formSelector: '.popup__form',
@@ -38,13 +38,10 @@ const initialCards = [
 
 const popupEdit = document.querySelector('.popup_action_edit');
 // const popupAdd = document.querySelector('.popup_action_add');
-const containerWithElements = document.querySelector('.elements');
 const profile = document.querySelector('.profile');
 const popupEditEnter = profile.querySelector('.profile__edit-button')
 const popupAddEnter = profile.querySelector('.profile__add-button')
 const inputName = popupEdit.querySelector('.popup__input_enter_name');
 const inputStatus = popupEdit.querySelector('.popup__input_enter_status');
-const userName = profile.querySelector('.profile__name');
-const userStatus = profile.querySelector('.profile__status');
 const formEditPopup = document.querySelector('form[name="popup-edit"]');
 const formAddPopup = document.querySelector('form[name="popup-add"]');
