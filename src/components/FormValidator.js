@@ -67,11 +67,11 @@ export default class FormValidator {
         this._buttonSubmit.classList.add(this._inactiveButtonClass);
     }
 
-    resetErrors(_inputs, popup){
-        _inputs.forEach((input) => {
-            const errorElement = popup.querySelector(`.${input.id}-error`);
+    resetErrors(){ 
+        this._inputs.forEach((input) => { 
+            const errorElement = this._form.querySelector(`.${input.id}-error`); 
             this._hideError(input, errorElement) 
-        });
+        }); 
     }
 
     enableValidation(){
