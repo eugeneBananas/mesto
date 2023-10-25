@@ -115,6 +115,19 @@
         </div>
     </section>
 
+    <section class="popup popup_action_vary"> 
+        <div class="popup__container"> 
+            <h2 class="popup__text">Обновить аватар</h2> 
+            <form class="popup__form" name="popup-vary" novalidate> 
+                <input type="url" pattern=".*\S+.*" id="popup__url" placeholder="Ссылка на картинку" 
+                    class="popup__input popup__input_enter_url" name="popup-vary__input-url" value="" required /> 
+                <span class="popup__error popup__url-error"></span> 
+                <button type="submit" class="popup__button" name="popup-vary__input-button">Создать</button> 
+            </form> 
+            <button type="button" class="popup__cross"></button> 
+        </div> 
+    </section>
+
     <section class="popup popup_action_add">
         <div class="popup__container">
             <h2 class="popup__text">Новое место</h2>
@@ -134,7 +147,7 @@
 
     <section class="popup popup_action_depict">
         <div class="popup__filling">
-            <img src="<%=require('./images/logo.svg')%>" alt="Изображение" class="popup__illustration">
+            <img src="./images/logo.svg" alt="Изображение" class="popup__illustration">
             <h2 class="popup__hint">Текст</h2>
             <button type="button" class="popup__cross"></button>
         </div>
@@ -142,25 +155,9 @@
 
     <section class="popup popup_action_delete">
         <div class="popup__container">
-            <div>
-                <h2 class="popup__text">Вы уверены?</h2>
-                <form class="popup__form popup__form_action_delete" name="popup-delete" novalidate>
-                    <button type="submit" class="popup__button" name="popup-delete__input-button">Да</button>
-                </form>
-            </div>
-            <button type="button" class="popup__cross"></button>
-        </div>
-    </section>
-
-    <section class="popup popup_action_vary">
-        <div class="popup__container">
-            <h2 class="popup__text">Обновить аватар</h2>
-            <form class="popup__form" name="popup-vary" novalidate>
-                <input type="url" pattern=".*\S+.*" id="popup__url" placeholder="Ссылка на картинку"
-                    class="popup__input popup__input_enter_url" name="popup-vary__input-url" value="" required />
-                <span class="popup__error popup__url-error"></span>
-                <button type="submit" class="popup__button" name="popup-vary__input-button">Создать</button>
-            </form>
+            <h2 class="popup__text">Вы уверены?</h2>
+            <form class="popup__form popup__form_action_delete" name="popup-delete" novalidate>
+            <button type="button" class="popup__button popup__button_action_delete" name="popup-delete__input-button">Да</button>
             <button type="button" class="popup__cross"></button>
         </div>
     </section>

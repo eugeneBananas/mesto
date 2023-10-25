@@ -11,6 +11,13 @@ export default class PopupWithImage extends Popup{
         this._imageCard.src = data.src;
         this._imageCard.alt = data.alt;
         this._textCard.textContent = data.textContent
-        super.open(); // ❤❤❤
+        super.open();
+    }
+
+    close(){
+        super.close();
+        this._imageCard.src = '';
+        this._imageCard.alt = '';
+        this._textCard.textContent = '';
     }
 }
