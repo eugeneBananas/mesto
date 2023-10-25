@@ -42,18 +42,8 @@ class Api {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                likes: [],
-                _id: "5d1f0611d321eb4bdcd707dd",
                 name,
-                link,
-                owner: {
-                    name: "Jacques Cousteau",
-                    about: "Sailor, researcher",
-                    avatar: "https://pictures.s3.yandex.net/frontend-developer/ava.jpg",
-                    _id: "ef5f7423f7f5e22bef4ad607",
-                    cohort: "76"
-                },
-                createdAt: "2019-07-05T08:10:57.741Z"
+                link
             })
         })
             .then(this._getResponseData)

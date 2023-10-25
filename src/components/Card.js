@@ -3,9 +3,8 @@ export default class Card {
     this._title = data.title;
     this._link = data.link;
     this._selector = data.selector;
-    this._likes = data.likes;
+    this.likes = data.likes;
     this._handleCardClick = data.handleCardClick;
-    this._handleCardDelete = data.handleCardDelete;
     this._id = data.id;
     this._profileId = data.profileId;
     this._handleLikeOn = data.handleLikeOn;
@@ -24,13 +23,13 @@ export default class Card {
     this._textCard.textContent = this._title;
     this._imageCard.src = this._link;
     this._imageCard.src = this._link;
-    this._likeCard.textContent = this._likes.length;
+    this._likeCard.textContent = this.likes.length;
     this._imageCard.alt = "На фото " + this._title;
   }
 
   _checkUserLike(){
-    for (let i = 0; i < this._likes.length; i++){
-      if (this._likes[i]['_id'] === this._profileId){
+    for (let i = 0; i < this.likes.length; i++){
+      if (this.likes[i]['_id'] === this._profileId){
         return true;
       }
     }
@@ -47,27 +46,22 @@ export default class Card {
     this._heartCard.disabled = value;
   }
 
+  toggleTapHeart(){
+    this._heartCard.classList.toggle('elements__heart_active');
+  }
+
+  toggleCounter(a){
+    this._countLikeCard.textContent = parseInt(this._countLikeCard.textContent) + a;
+  }
+
   _toggleLike(){
     this._toggleDisablingLike(true);
     if (!this._checkUserLike()){
       this._handleLikeOn(this._id)
-        .then( (res) => {
-          this._likes = res.likes;
-          this._heartCard.classList.toggle('elements__heart_active')
-          this._countLikeCard.textContent = parseInt(this._countLikeCard.textContent) + 1;
-        })
-        .catch(err => console.log(`Ошибка.....: ${err}`))
-        .finally( () => this._toggleDisablingLike(false))
     }
     else{
       this._handleLikeOff(this._id)
-      .then( (res) => {
-        this._likes = res.likes;
-        this._heartCard.classList.toggle('elements__heart_active')
-        this._countLikeCard.textContent = parseInt(this._countLikeCard.textContent) - 1;
-      })
-      .catch(err => console.log(`Ошибка.....: ${err}`))
-      .finally(() => this._toggleDisablingLike(false))
+
     }
   }
 
@@ -79,14 +73,13 @@ export default class Card {
 
   _setTrashEventListener(){
     this._trashCard.addEventListener('click', (evt) => { 
-      this._handleOpenPopupDelete();
-      this._handleCardDelete(this._id, this);
+      this._handleOpenPopupDelete(this._id, this);
   });
   }
 
   _setImageEventListener(){
     this._imageCard.addEventListener('click',(event) => {
-      this._handleCardClick({src: this._imageCard.src, alt: this._imageCard.alt, textContent: this._textCard.textContent});
+      this._handleCardClick({src: this._link, alt: this._imageCard.alt, textContent: this._title});
     })
   }
 
@@ -122,5 +115,4 @@ export default class Card {
     this._setEventListeners();
     return this._cardElement;
   }
-
 }

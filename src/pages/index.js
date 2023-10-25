@@ -57,8 +57,17 @@ const popupWithFormCreate = new PopupWithForm('.popup_action_add', (data) => {
 })})
 
 const popupWithFormDelete = new PopupConfirm('.popup_action_delete', 
-  (cardId) => 
+  (cardId) => {
     api.deleteCard(cardId)
+      .then(() => {
+        popupWithFormDelete._card.removeCard();
+        popupWithFormDelete._card = null;
+        popupWithFormDelete.close();
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+  }
 )
 
 const popupWithFormAvatar = new PopupWithForm('.popup_action_vary', (data) => {
@@ -105,14 +114,29 @@ popupAvatarEnter.addEventListener("click", () => {
 
 function createCard({title, link, selector, likes, id, ownerId = profileId}){
   const handleCardClick = popupWithImage.open.bind(popupWithImage);
-  const handleOpenPopupDelete = popupWithFormDelete.open.bind(popupWithFormDelete);
-  const handleCardDelete = (cardId, card) => { popupWithFormDelete.deleteCard(cardId, card)}
-  const handleLikeOn = () => api.likeCard(id);
-  const handleLikeOff = () => api.unlikeCard(id);
+  const handleOpenPopupDelete = (cardId, card) => popupWithFormDelete.open.bind(popupWithFormDelete)(cardId, card)
+  const handleLikeOn = () => {api.likeCard(id)
+                              .then( (res) => {
+                                card.likes = res.likes;
+                                card.toggleTapHeart();
+                                card.toggleCounter(1)
+                              })
+                              .catch(err => console.log(`Ошибка.....: ${err}`))
+                              .finally( () => card._toggleDisablingLike(false))
+  }
+  const handleLikeOff = () => {api.unlikeCard(id)
+                              .then( (res) => {
+                                card.likes = res.likes;
+                                card.toggleTapHeart();
+                                card.toggleCounter(-1);
+                              })
+                              .catch(err => console.log(`Ошибка.....: ${err}`))
+                              .finally(() => card._toggleDisablingLike(false))
+  };
   const card = new Card({
     title, link, selector, handleCardClick, 
-    likes, handleCardDelete, handleLikeOn, handleLikeOff, id, profileId,
-    ownerId, handleCardDelete, handleOpenPopupDelete
+    likes, handleLikeOn, handleLikeOff, id, profileId,
+    ownerId, handleOpenPopupDelete
   });
   const cardElement = card.createCard();
   return cardElement;
