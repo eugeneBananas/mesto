@@ -43,5 +43,5 @@
 
 .popup__input_type_error{border-bottom-color:red}
 .popup__button_inactive{background:#fff;border:1px solid #000;color:#000;opacity:.2;pointer-events:none}
-.popup__form_action_delete{margin-top:21.33333px}
+.popup__button_action_delete{margin-left:8.37209%;margin-right:8.37209%;margin-top:38px;width:358px}
 
